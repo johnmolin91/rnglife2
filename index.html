@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Random Strategy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="reset.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> 
+
+    <!-- features to add:
+        1. buttons that shows all the possibilities
+        2. color scale to show what the RNG landed on
+        3. input methods
+            choices with "add new"
+            percentages
+        4. 
+    -->
+
+</head>
+<body>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>Morning Routine</strong></h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped" id='morning-table'>
+                    <tbody>
+                        <thead>
+                            <tr>
+                                <th>Inputs</th>
+                                <th>Percentage</th>
+                                <th>Choices</th>
+                                <th>RNG</th>
+                                    <tr>
+                                        <td>
+                                            <input type="text" id="inputr1d1choice"></input>
+                                        </td>
+                                        <td>
+                                            <input type="number" id="inputr1d2percentage"></input>
+                                            <button id="storec1">Store</button>
+                                        </td>
+                                    </tr>
+                            </tr>
+                        </thead>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttonGen">
+        <button class="generate">Generate Strategy</button>
+    </div>
+
+</body>
+
+<script src="./main.js"></script>
+
+</html>
