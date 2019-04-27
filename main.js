@@ -4,9 +4,6 @@ var j = 0;
 
 $( document ).ready(function() {
 
-    // var morningVar1 = 0;
-    // var morningVar2 = 0;
-
     function createVariables(){
       
         for (var i = 0; i <= 50; i++) {
@@ -18,8 +15,6 @@ $( document ).ready(function() {
             choicesArray.push(choices);
         }
         console.log(choicesArray);
-      
-        // return choicesArray;
       };
 
     function emptyInput() {
@@ -33,7 +28,6 @@ $( document ).ready(function() {
         $("#morning-table-output tr").remove();
         i = 0;
         j = 0;
-        addRow();
         addHeaders();
         createVariables();
     };
@@ -42,10 +36,6 @@ $( document ).ready(function() {
         choicesArray[i].cname = document.getElementById("inputChoice").value;
         choicesArray[i].cpercentage = document.getElementById("inputPercentage").value;
         appendOne();
-        // var choice + i = {
-        //     cname:null,
-        //     cpercentage:0
-        // }
         console.log(choicesArray[i].cname);
         console.log(choicesArray[i].cpercentage);
         i++;
