@@ -9,7 +9,7 @@ $( document ).ready(function() {
 
     function createVariables(){
       
-        for (var i = 0; i <= 10; i++) {
+        for (var i = 0; i <= 50; i++) {
             var choices = {
                 id: i,
                 cname:null,
@@ -22,9 +22,20 @@ $( document ).ready(function() {
         // return choicesArray;
       };
 
-    function emptyTable() {
+    function emptyInput() {
         document.getElementById("inputChoice").value = "";
         document.getElementById("inputPercentage").value = "";
+    };
+
+    function emptyOutput() {
+        choicesArray.splice(0,choicesArray.length)
+        $("#morning-table-output td").remove();
+        $("#morning-table-output tr").remove();
+        i = 0;
+        j = 0;
+        addRow();
+        addHeaders();
+        createVariables();
     };
 
     function storeBut() {
@@ -40,12 +51,30 @@ $( document ).ready(function() {
         i++;
     };
 
+    function addRow() {
+        $("#morning-table-output > tbody").append("<tr>");
+    }
+
+    function endRow() {
+        $("#morning-table-output > tbody").append("</tr>");
+    }
+
+    function addHeaders() {
+        $("#morning-table-output > tbody").append("<tr><th>Choice 1</th>" + "<th>Choice 2</th>" + "<th>Choice 3</th>" + "<th>Choice 4</th>" + "<th>Choice 5</th>" + "<th>RNG</th></tr>");
+    }
+
     function appendOne() {
-        if (j = 0) {
-            $("#morning-table-output > tbody").append("<tr><td>" + choicesArray[i].cname + " (" + choicesArray[i].cpercentage + "), </td></tr>");
+        if (j == 0) {
+            addRow();
+            $("#morning-table-output > tbody").append("<td>" + choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")</td>");
             j++;
-        } else {
-            $("#morning-table-output > tbody").append("<td>" + choicesArray[i].cname + " (" + choicesArray[i].cpercentage + "), </td>");
+        } else if (j <= 3) {
+            $("#morning-table-output > tbody").append("<td>" + choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")</td>");
+            j++;
+        } else if (j == 4) {
+            $("#morning-table-output > tbody").append("<td>" + choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")</td>");
+            endRow();
+            j = 0;
         }
     };
 
@@ -103,6 +132,7 @@ $( document ).ready(function() {
     
     createVariables();
     $(".store").on("click", storeBut);
+    $(".clearStrategy").on("click", emptyOutput);
     // $(".store").on("click", emptyTable);
     // $(".generate").on("click", generateIPLowBetStrat);
     // $(".generate").on("click", generateIPLowStrongStrat);
