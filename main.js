@@ -1,24 +1,53 @@
+var choicesArray = [];
+var i = 0;
+var j = 0;
+
 $( document ).ready(function() {
 
     // var morningVar1 = 0;
     // var morningVar2 = 0;
-    // var morningVar3 = 0;
-    var choiceOne = {
-        cname:null,
-        cpercentage:0
-    }
+
+    function createVariables(){
+      
+        for (var i = 0; i <= 10; i++) {
+            var choices = {
+                id: i,
+                cname:null,
+                cpercentage:0
+            };
+            choicesArray.push(choices);
+        }
+        console.log(choicesArray);
+      
+        // return choicesArray;
+      };
 
     function emptyTable() {
-        $("#morning-table > tbody").empty();
+        document.getElementById("inputChoice").value = "";
+        document.getElementById("inputPercentage").value = "";
     };
 
-    function storeBut1() {
-        choiceOne.cname = document.getElementById("inputr1d1choice").value;
-        choiceOne.cpercentage = document.getElementById("inputr1d2percentage").value;
-        $("#morning-table > tbody").append("<td>" + choiceOne.cname + "</td>");
-        console.log(choiceOne.cname);
-        console.log(choiceOne.cpercentage);
-    }
+    function storeBut() {
+        choicesArray[i].cname = document.getElementById("inputChoice").value;
+        choicesArray[i].cpercentage = document.getElementById("inputPercentage").value;
+        appendOne();
+        // var choice + i = {
+        //     cname:null,
+        //     cpercentage:0
+        // }
+        console.log(choicesArray[i].cname);
+        console.log(choicesArray[i].cpercentage);
+        i++;
+    };
+
+    function appendOne() {
+        if (j = 0) {
+            $("#morning-table-output > tbody").append("<tr><td>" + choicesArray[i].cname + " (" + choicesArray[i].cpercentage + "), </td></tr>");
+            j++;
+        } else {
+            $("#morning-table-output > tbody").append("<td>" + choicesArray[i].cname + " (" + choicesArray[i].cpercentage + "), </td>");
+        }
+    };
 
     // function generateStrategy() {
     //     inputr1d1 = document.getElementById('inputr1d1choice').nodeValue();
@@ -72,8 +101,9 @@ $( document ).ready(function() {
     //     }
     // }
     
-    // $(".generate").on("click", emptyTable);
-    $("#storec1").on("click", storeBut1);
+    createVariables();
+    $(".store").on("click", storeBut);
+    // $(".store").on("click", emptyTable);
     // $(".generate").on("click", generateIPLowBetStrat);
     // $(".generate").on("click", generateIPLowStrongStrat);
     // $(".generate").on("click", generateIPHighBetStrat);
