@@ -1,6 +1,14 @@
 var choicesArray = [];
 var i = 0;
 var j = 0;
+var rowNum = 0;
+var rowRng = 0;
+// var defineId;
+var rng = 0;
+var select;
+
+// add row number to choices
+// figure out why getelementbyid is not working on string variable
 
 $( document ).ready(function() {
 
@@ -28,8 +36,58 @@ $( document ).ready(function() {
         $("#morning-table-output tr").remove();
         i = 0;
         j = 0;
+        rowNum = 0;
         addHeaders();
         createVariables();
+    };
+
+    function addRow() {
+        // $("#morning-table-output > tbody").append("<tr>");
+        var table = document.getElementById("morning-table-output");
+        var tableRow = table.insertRow(-1);
+        tableRow.id = "row" + rowNum;
+        rowNum++;
+    }
+
+    function endRow() {
+        $("#morning-table-output > tbody").append("</tr>");
+    }
+
+    function insertrng() {
+        var row = document.getElementById(row0);
+        var x = row.insertCell(-1);
+        x.innerHTML = "New cell";
+    }
+
+    function addHeaders() {
+        $("#morning-table-output > tbody").append("<tr><th>Choice 1</th>" + "<th>Choice 2</th>" + "<th>Choice 3</th>" + "<th>Choice 4</th>" + "<th>Choice 5</th>" + "<th>RNG</th></tr>");
+    }
+
+    function appendOne() {
+        if (j == 0) {
+            // addRow();
+            var defineId = "row" + rowNum;
+            var row = document.getElementById(defineId);
+            var x = row.insertCell(-1);
+            x.innerHTML = choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")";
+            // $("#morning-table-output > tbody").append("<td>" + choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")</td>");
+            j++;
+        } else if (j <= 3) {
+            var defineId = "row" + rowNum;
+            var row = document.getElementById(defineId);
+            var x = row.insertCell(-1);
+            x.innerHTML = choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")";
+            // $("#morning-table-output > tbody").append("<td>" + choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")</td>");
+            j++;
+        } else if (j == 4) {
+            var defineId = "row" + rowNum;
+            var row = document.getElementById(defineId);
+            var x = row.insertCell(-1);
+            x.innerHTML = choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")";
+            // $("#morning-table-output > tbody").append("<td>" + choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")</td>");
+            // endRow();
+            j = 0;
+        }
     };
 
     function storeBut() {
@@ -41,38 +99,14 @@ $( document ).ready(function() {
         i++;
     };
 
-    function addRow() {
-        $("#morning-table-output > tbody").append("<tr>");
+
+    function generateStrategy() {
+        // rng = Math.floor(Math.random() * 101);
+        // if (rng < choicesArray[0].cpercentage) {
+        //     select = choicesArray[0];
+        // }
+        insertrng();
     }
-
-    function endRow() {
-        $("#morning-table-output > tbody").append("</tr>");
-    }
-
-    function addHeaders() {
-        $("#morning-table-output > tbody").append("<tr><th>Choice 1</th>" + "<th>Choice 2</th>" + "<th>Choice 3</th>" + "<th>Choice 4</th>" + "<th>Choice 5</th>" + "<th>RNG</th></tr>");
-    }
-
-    function appendOne() {
-        if (j == 0) {
-            addRow();
-            $("#morning-table-output > tbody").append("<td>" + choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")</td>");
-            j++;
-        } else if (j <= 3) {
-            $("#morning-table-output > tbody").append("<td>" + choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")</td>");
-            j++;
-        } else if (j == 4) {
-            $("#morning-table-output > tbody").append("<td>" + choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")</td>");
-            endRow();
-            j = 0;
-        }
-    };
-
-    // function generateStrategy() {
-    //     inputr1d1 = document.getElementById('inputr1d1choice').nodeValue();
-    //     inputr1d2 = document.getElementById('inputr1d2percentage').nodeValue();
-    //     $("#morning-table > tbody").append("<tr><td>" + inputr1d1 + "</td><td>" + inputr1d2 + "</td></tr>");
-    // }
 
     // var ipCheckVar1 = 0;
     // var ipCheckVar2 = 0;
@@ -123,6 +157,8 @@ $( document ).ready(function() {
     createVariables();
     $(".store").on("click", storeBut);
     $(".clearStrategy").on("click", emptyOutput);
+    $(".generate").on("click", generateStrategy);
+    $(".generateRow").on("click", addRow);
     // $(".store").on("click", emptyTable);
     // $(".generate").on("click", generateIPLowBetStrat);
     // $(".generate").on("click", generateIPLowStrongStrat);
