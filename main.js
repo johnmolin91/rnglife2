@@ -3,20 +3,21 @@ var i = 0;
 var j = 0;
 var rowNum = 0;
 var rowRng = 0;
+var rowLimit = 0;
 // var defineId;
 var rng = 0;
 var select;
 
 // add row number to choices
-// figure out why getelementbyid is not working on string variable
 
 $( document ).ready(function() {
 
     function createVariables(){
       
-        for (var i = 0; i <= 50; i++) {
+        for (var i = 0; i <= 100; i++) {
             var choices = {
                 id: i,
+                row:0,
                 cname:null,
                 cpercentage:0
             };
@@ -52,7 +53,8 @@ $( document ).ready(function() {
             console.log(x);
         }
         rowNum++;
-        var j = 0;
+        rowLimit = 0;
+        j = 0;
     }
 
     function endRow() {
@@ -66,7 +68,7 @@ $( document ).ready(function() {
     }
 
     function addHeaders() {
-        $("#morning-table-output > tbody").append("<tr><th>Choice 1</th>" + "<th>Choice 2</th>" + "<th>Choice 3</th>" + "<th>Choice 4</th>" + "<th>Choice 5</th>" + "<th>RNG</th></tr>");
+        $("#morning-table-output > tbody").append("<tr><th>Choice 1</th>" + "<th>Choice 2</th>" + "<th>Choice 3</th>" + "<th>Choice 4</th>" + "<th>Choice 5</th>" + "<th>Choice 6</th>" + "<th>Choice 7</th>" + "<th>Choice 8</th>" + "<th>RNG</th></tr>" + "<div class='buttonGen'><button class='generateRow'>Add Row</button></div>");
     }
 
     function appendOne() {
@@ -100,12 +102,18 @@ $( document ).ready(function() {
     };
 
     function storeBut() {
-        choicesArray[i].cname = document.getElementById("inputChoice").value;
-        choicesArray[i].cpercentage = document.getElementById("inputPercentage").value;
-        appendOne();
-        console.log(choicesArray[i].cname);
-        console.log(choicesArray[i].cpercentage);
-        i++;
+        if (rowLimit <= 7) {
+            choicesArray[i].cname = document.getElementById("inputChoice").value;
+            choicesArray[i].cpercentage = document.getElementById("inputPercentage").value;
+            choicesArray[i].row = rowNum - 1;
+            appendOne();
+            console.log(choicesArray[i].cname);
+            console.log(choicesArray[i].cpercentage);
+            i++;
+            rowLimit++;
+        } else {
+            alert("You can not add any more choices to this row.");
+        }
     };
 
 
