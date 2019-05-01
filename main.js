@@ -7,6 +7,8 @@ var rowLimit = 0;
 // var defineId;
 var rng = 0;
 var select;
+var rngOn = 0;
+var rowDeletion;
 
 // add row number to choices
 
@@ -14,7 +16,7 @@ $( document ).ready(function() {
 
     function createVariables(){
       
-        for (var i = 0; i <= 100; i++) {
+        for (var i = 0; i < 100; i++) {
             var choices = {
                 id: i,
                 row:0,
@@ -38,6 +40,9 @@ $( document ).ready(function() {
         i = 0;
         j = 0;
         rowNum = 0;
+        rowRng = 0;
+        rowLimit = 0;
+        rngOn = 0;
         addHeaders();
         createVariables();
     };
@@ -62,9 +67,13 @@ $( document ).ready(function() {
     }
 
     function insertrng() {
-        var row = document.getElementById(row0);
-        var x = row.insertCell(-1);
-        x.innerHTML = "New cell";
+        for (var i = 0; i < rowNum; i++) {
+            var row = "row" + (rowNum);
+            var x = document.getElementById(row);
+            var y = x.insertCell(-1);
+            y.innerHTML = Math.random();
+        };
+        rngOn = 1;
     }
 
     function addHeaders() {
@@ -116,12 +125,23 @@ $( document ).ready(function() {
         }
     };
 
+    function clearRng() {
+        if (rngOn == 1) {
+            for (var i = 0; i < rowNum + 1; i++) {
+                rowDeletion = "row" + i;
+                var y = document.getElementById(rowDeletion);
+                y.deleteCell(-1);
+            }
+        }
+    }
+
 
     function generateStrategy() {
         // rng = Math.floor(Math.random() * 101);
         // if (rng < choicesArray[0].cpercentage) {
         //     select = choicesArray[0];
         // }
+        clearRng();
         insertrng();
     }
 
