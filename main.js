@@ -52,6 +52,7 @@ $( document ).ready(function() {
             console.log(x);
         }
         rowNum++;
+        var j = 0;
     }
 
     function endRow() {
