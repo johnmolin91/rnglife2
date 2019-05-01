@@ -46,6 +46,11 @@ $( document ).ready(function() {
         var table = document.getElementById("morning-table-output");
         var tableRow = table.insertRow(-1);
         tableRow.id = "row" + rowNum;
+        for (var i = 0; i < 8; i++) {
+            var x = tableRow.insertCell(-1);
+            x.id = tableRow.id + "d" + i; 
+            console.log(x);
+        }
         rowNum++;
     }
 
@@ -66,24 +71,27 @@ $( document ).ready(function() {
     function appendOne() {
         if (j == 0) {
             // addRow();
-            var defineId = "row" + rowNum;
-            var row = document.getElementById(defineId);
-            var x = row.insertCell(-1);
-            x.innerHTML = choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")";
+            var defineId = "row" + (rowNum - 1);
+            var row = defineId;
+            var z = row + "d" + j;
+            var y = document.getElementById(z);
+            y.innerHTML = choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")";
             // $("#morning-table-output > tbody").append("<td>" + choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")</td>");
             j++;
-        } else if (j <= 3) {
-            var defineId = "row" + rowNum;
-            var row = document.getElementById(defineId);
-            var x = row.insertCell(-1);
-            x.innerHTML = choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")";
+        } else if (j <= 6) {
+            var defineId = "row" + (rowNum - 1);
+            var row = defineId;
+            var z = row + "d" + j;
+            var y = document.getElementById(z);
+            y.innerHTML = choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")";
             // $("#morning-table-output > tbody").append("<td>" + choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")</td>");
             j++;
-        } else if (j == 4) {
-            var defineId = "row" + rowNum;
-            var row = document.getElementById(defineId);
-            var x = row.insertCell(-1);
-            x.innerHTML = choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")";
+        } else if (j == 7) {
+            var defineId = "row" + (rowNum - 1);
+            var row = defineId;
+            var z = row + "d" + j;
+            var y = document.getElementById(z);
+            y.innerHTML = choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")";
             // $("#morning-table-output > tbody").append("<td>" + choicesArray[i].cname + " (" + choicesArray[i].cpercentage + ")</td>");
             // endRow();
             j = 0;
