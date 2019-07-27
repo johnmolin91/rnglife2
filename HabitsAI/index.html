@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Habits AI Walk</title>
+
+	<!-- 5 Habits: sleep, reading, meditation, verbal, work
+			Factors: Range of actions taken, assign production to each task done, an emotional bank balance, willpower, limit to extremes
+
+		Future:Different levels of ambition in the ai; graph; CFR self-improvement technique, slow adjusting CFR
+	-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="./main.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+</head>
+<body>
+
+	<!-- Range of random walks, random amount of emotional bank balance in range, random amount of willpower total, random amount of willpower increase/decrease -->
+
+	<div class="runsDiv">
+		Runs:0
+	</div>
+
+	<div class="productionDiv">
+		Total Production:0
+	</div>
+
+	<div class="sleepDiv">
+		Sleep Score:0
+	</div>
+
+	<div class="readDiv">
+		Reading Score:0
+	</div>
+
+	<div class="meditationDiv">
+		Meditation Time:0
+	</div>
+
+	<div class="verbalExDiv">
+		Verbal Exercise Time:0
+	</div>
+
+	<div class="verbalStudyDiv">
+		Verbal Study Time:0
+	</div>
+
+	<div class="workDiv">
+		Hours Worked:0
+	</div>
+
+	<div class="multDiv">
+		Willpower Multiplier:1
+	</div>
+
+	<div class="willDiv">
+		Willpower:50
+	</div>
+
+	<div class="emotionDiv">
+		Emotional Balance:50
+	</div>
+
+	<button class="runButton"">Go</button>
+
+	<div class="chartDiv" style="height:400px">
+		<canvas id="myChartData"></canvas>
+	</div>
+	
+
+</body>
+</html>
